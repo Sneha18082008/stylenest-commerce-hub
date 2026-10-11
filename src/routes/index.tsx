@@ -249,7 +249,7 @@ function ProductForm({ initial, onClose, onSave }: { initial: Product | null; on
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const price = parseFloat(f.price), stock = parseInt(f.stock, 10);
-    if (!f.name.trim() || isNaN(price) || price < 0 || isNaN(stock) || stock < 0) return toast.error("Please fill all fields with valid values");
+    if (!f.name.trim() || isNaN(price) || price < 0 || isNaN(stock) || stock < 0) { toast.error("Please fill all fields with valid values"); return; }
     onSave({ id: initial?.id ?? `p${Date.now()}`, name: f.name.trim(), category: f.category, price, stock, image: f.image.trim() || "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=70&auto=format&fit=crop" });
   };
   return (
